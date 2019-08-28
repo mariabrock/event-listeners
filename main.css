@@ -2,8 +2,10 @@ body {
     background-color: darkcyan;
 }
 
-.card {
+.pie-card {
     display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 30%;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -11,7 +13,12 @@ body {
     text-align: center;
   }
   
-  .card img {
+  .pie-card img {
     height: 200px;
     width: 200px;
+  }
+
+  #pie-zone {
+      display: flex;
+      justify-content: space-around;
   }

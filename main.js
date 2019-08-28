@@ -29,27 +29,49 @@ const dangPie = [
     {
         name: 'sweet potato pie',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/SweetPotatoPie.jpg/1200px-SweetPotatoPie.jpg',
-        instructor:'john'
+        instructor:'zoe'
     }
 ];
 
 const printToDOM = (toPrint, divId) => {
-    document.getElementById(divId).innerHTML += toPrint
+    document.getElementById(divId).innerHTML = toPrint
 };
 
 const pieBuilder = (pieArray) => {
+    let domString = ''
     for (let i = 0; i < pieArray.length; i++) {
         const pie = pieArray[i]
-        const domString = `
+        domString += `
         <div class="pie-card">
             <h2>${pie.name}</h2>
             <img src=${pie.image} alt='Image of ${pie.name}' />
         </div>
         `
 
-        printToDOM(domString, 'pie-zone')
     }
+    printToDOM(domString, 'pie-zone')
   };
 
-  pieBuilder(dangPie);
+const buttonClick = (e) =>{
+    //figure out WHO rhis instructoor is for the button we clicked on
+    const instructor = e.target.id
+    //only get those pies from the list of all the pies
+    const selectedPies = []
+    for (let i = 0; i < dangPie.length; i++) {
+        const pie = dangPie[i]
+        if (pie.instructor === instructor) {
+            selectedPies.push(pie);
+        }
+    }
+    //pass small list of pies back into the pie builder
+    pieBuilder(selectedPies)
+}
+
+  document.getElementById('zoe').addEventListener('click', buttonClick)
+  document.getElementById('michael').addEventListener('click', buttonClick)
+  document.getElementById('greg').addEventListener('click', buttonClick)
+  document.getElementById('callan').addEventListener('click', buttonClick)
+  document.getElementById('maria').addEventListener('click', buttonClick)
+
+  //pieBuilder(dangPie);
     
